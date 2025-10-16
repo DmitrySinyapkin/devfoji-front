@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 import { getAppConfig } from "../config/init";
-import { refreshUrl } from "./endpoints";
+import { refreshUrl, loginUrl } from "./endpoints";
 
 const baseURL = getAppConfig().apiBaseUrl
 
@@ -20,7 +20,7 @@ instances.forEach(instance => {
     }, async function (error) {
         const originalRequest = error.config
         if (error.response.status === 401) {
-            if (originalRequest.url.includes(refreshUrl)) {
+            if (originalRequest.url.includes(refreshUrl) || originalRequest.url.includes(loginUrl)) {
 
             } else {
                 await api.post(refreshUrl)
@@ -28,6 +28,6 @@ instances.forEach(instance => {
                 return instance(originalRequest)
             }
         }
-        return Promise.reject(error) 
+        return Promise.reject(error.response.data) 
     })
 })

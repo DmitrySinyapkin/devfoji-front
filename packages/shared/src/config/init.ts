@@ -1,7 +1,7 @@
 import { AppConfig } from "../types"
 
 const config: AppConfig = {
-    apiBaseUrl: 'http://localhost:3001/api'
+    apiBaseUrl: 'http://localhost:3000/api'
 }
 
 export const setAppConfig = (newConfig: Partial<AppConfig>) => {
