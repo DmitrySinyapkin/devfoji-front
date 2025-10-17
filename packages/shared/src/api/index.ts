@@ -1,11 +1,8 @@
 import axios, { AxiosInstance } from "axios";
-import { getAppConfig } from "../config/init";
 import { refreshUrl, loginUrl } from "./endpoints";
 
-const baseURL = getAppConfig().apiBaseUrl
 
 export const api: AxiosInstance = axios.create({
-    baseURL,
     withCredentials: true,
     headers: {
         'Content-Type': 'application/json'
