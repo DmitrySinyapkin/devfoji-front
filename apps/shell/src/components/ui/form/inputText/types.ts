@@ -1,5 +1,5 @@
 export interface Props {
-    type: 'text' | 'email' | 'tel' | 'search' | 'number'
+    type?: 'text' | 'email' | 'tel' | 'search' | 'number'
     label?: string
     placeholder?: string
     error?: string | undefined
