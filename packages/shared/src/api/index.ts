@@ -17,9 +17,7 @@ instances.forEach(instance => {
     }, async function (error) {
         const originalRequest = error.config
         if (error.response.status === 401) {
-            if (originalRequest.url.includes(refreshUrl) || originalRequest.url.includes(loginUrl)) {
-
-            } else {
+            if (![refreshUrl, loginUrl].includes(originalRequest.url)) {
                 await api.post(refreshUrl)
                 originalRequest._retry = true
                 return instance(originalRequest)
