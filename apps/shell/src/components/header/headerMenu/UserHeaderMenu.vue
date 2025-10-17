@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import { useUserStore } from 'src/stores/user';
-
+import UserAvatar from 'src/components/ui/user/userAvatar/UserAvatar.vue';
+import AuthUserContextMenu from 'src/components/ui/user/authUserContextMenu/AuthUserContextMenu.vue';
 const userStore = useUserStore()
 </script>
 
 <template>
-    <div class="row">
-        <q-avatar color="primary" text-color="white">
-            <img
-                v-if="userStore.user?.avatarUrl"
-                :src="userStore.user.avatarUrl"
-            />
-            <span v-else>{{ userStore.user?.name[0]?.toUpperCase() || 'A' }}</span>
-        </q-avatar>
+    <div class="row justify-center items-center">
+        <UserAvatar
+            :user="userStore.user!"
+        >
+            <template #menu>
+                <AuthUserContextMenu />
+            </template>
+        </UserAvatar>
     </div>
 </template>
