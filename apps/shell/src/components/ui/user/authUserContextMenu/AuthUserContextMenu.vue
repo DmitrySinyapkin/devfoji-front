@@ -11,6 +11,7 @@ const navigateToSettings = async () => {
 
 const logoutUser = async () => {
     await logout()
+    await router.push('/')
 }
 
 const menuItems = [

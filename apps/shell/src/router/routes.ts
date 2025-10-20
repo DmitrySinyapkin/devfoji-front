@@ -5,6 +5,9 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
+    meta: {
+      public: true
+    }
   },
   {
     path: '/auth',
@@ -12,11 +15,17 @@ const routes: RouteRecordRaw[] = [
     children: [
       {
         path: 'login',
-        component: () => import('pages/auth/LoginPage.vue')
+        component: () => import('pages/auth/LoginPage.vue'),
+        meta: {
+          public: true
+        }
       },
       {
         path: 'register',
-        component: () => import('pages/auth/RegisterPage.vue')
+        component: () => import('pages/auth/RegisterPage.vue'),
+        meta: {
+          public: true
+        }
       },
     ]
   },
