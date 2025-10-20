@@ -1,17 +1,11 @@
 import { useUserStore } from "src/stores/user";
-import { eventBus, api, apiEndpoints, isApiError, getErrorMessage, useLocalStorage } from "@devfoji/shared";
+import { eventBus, api, apiEndpoints, isApiError, getErrorMessage, localStorageKeys } from "@devfoji/shared";
 import type { User, AuthToken } from "@devfoji/shared";
 import type { LoginBody, RegisterBody } from "src/types/auth";
 import { computed } from "vue";
 
 export function useAuth() {
     const userStore = useUserStore()
-    const { 
-        localStorageKeys,
-        setLocalStorageItem,
-        getLocalStorageItem,
-        removeLocalStorageItem
-    } = useLocalStorage()
 
     const isAuth = computed(() => !!userStore.user)
 
@@ -23,7 +17,7 @@ export function useAuth() {
                 await userStore.getUserInfo()
 
                 if (userStore.user?.id) {
-                    setLocalStorageItem(localStorageKeys.isAuth, 'true')
+                    localStorage.setItem(localStorageKeys.isAuth, 'true')
                     eventBus.emit('auth:login', { user: userStore.user })
                 }
             }
@@ -41,7 +35,7 @@ export function useAuth() {
 
             if (resp.success) {
                 userStore.clearUserInfo()
-                removeLocalStorageItem(localStorageKeys.isAuth)
+                localStorage.removeItem(localStorageKeys.isAuth)
                 eventBus.emit('auth:logout', null)
             }
         } catch(err) {
@@ -71,7 +65,7 @@ export function useAuth() {
     }
 
     const init = async () => {
-        if (getLocalStorageItem(localStorageKeys.isAuth)) {
+        if (localStorage.getItem(localStorageKeys.isAuth)) {
             await userStore.getUserInfo()
         }
     }

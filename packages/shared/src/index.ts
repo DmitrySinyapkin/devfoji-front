@@ -11,7 +11,5 @@ export { eventBus } from './eventBus'
 export type { EventBusEvents } from './eventBus/events'
 
 //config
-export * from './config/init'
+export * from './config'
 
-//composables
-export { useLocalStorage } from './composables/useLocalStorage/useLocalStorage'
