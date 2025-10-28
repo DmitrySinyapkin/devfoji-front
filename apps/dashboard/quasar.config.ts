@@ -1,11 +1,9 @@
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file
-import dotenv from 'dotenv'
+
 import { defineConfig } from '#q-app/wrappers';
 import { fileURLToPath } from 'node:url';
 import federation from '@originjs/vite-plugin-federation'
-
-dotenv.config()
 
 export default defineConfig((ctx) => {
   return {
@@ -15,7 +13,7 @@ export default defineConfig((ctx) => {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
-    boot: ['config', 'i18n', 'axios', 'init'],
+    boot: ['i18n'],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#css
     css: ['app.scss'],
@@ -96,24 +94,22 @@ export default defineConfig((ctx) => {
           { server: false },
         ],
         federation({
-          name: 'shell',
-          remotes: {
-            'dashboard': {
-              external: `${process.env.DASHBOARD_APP_URL}/remoteEntry.js`,
-              externalType: 'url',
-              from: 'vite',
-            }, 
+          name: 'dashboard',
+          filename: 'remoteEntry.js',
+          exposes: {
+            './DashboardApp': './src/pages/IndexPage.vue'
           },
-          shared: ['vue', 'quasar', 'pinia', '@quasar/extras']
+          //shared: ['vue', 'quasar', 'pinia', '@quasar/extras']
         })
       ],
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#devserver
     devServer: {
-      port: 3001,
+      port: 3002,
+      middlewareMode: false,
       // https: true,
-      open: true, // opens browser window automatically
+      //open: true, // opens browser window automatically
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#framework
@@ -139,7 +135,7 @@ export default defineConfig((ctx) => {
     animations: [],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#sourcefiles
-    // sourceFiles: {
+     sourceFiles: {
     //   rootComponent: 'src/App.vue',
     //   router: 'src/router/index',
     //   store: 'src/store/index',
@@ -149,11 +145,11 @@ export default defineConfig((ctx) => {
     //   electronMain: 'src-electron/electron-main',
     //   electronPreload: 'src-electron/electron-preload'
     //   bexManifestFile: 'src-bex/manifest.json
-    // },
+    },
 
     // https://v2.quasar.dev/quasar-cli-vite/developing-ssr/configuring-ssr
     ssr: {
-      prodPort: 3001, // The default port that the production server should use
+      prodPort: 3002, // The default port that the production server should use
       // (gets superseded if process.env.PORT is specified at runtime)
 
       middlewares: [
@@ -227,7 +223,7 @@ export default defineConfig((ctx) => {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'shell',
+        appId: '@devfoji/dashboard',
       },
     },
 
