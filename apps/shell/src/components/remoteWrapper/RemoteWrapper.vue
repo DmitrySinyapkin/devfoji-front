@@ -18,7 +18,7 @@ onMounted(async() => {
 
 onBeforeUnmount(() => {
   if (remoteWrapper.value) {
-    unmountRemoteApp(remoteWrapper.value)
+    unmountRemoteApp()
   }
 })
 </script>

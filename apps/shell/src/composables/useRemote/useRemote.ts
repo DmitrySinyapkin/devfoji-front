@@ -4,6 +4,7 @@ import type { RemoteAppName, RemoteAppStatus } from "./types";
 
 export function useRemote(name: RemoteAppName) {
     const status = ref<RemoteAppStatus>('loading')
+    const element = ref<HTMLElement | null>(null)
 
     const loadRemoteModule = async () => {
         const loader = remoteApps[name]
@@ -19,6 +20,7 @@ export function useRemote(name: RemoteAppName) {
         try {
             const remoteModule = await loadRemoteModule()
             remoteModule.mount(target)
+            element.value = target
             status.value = 'ready'
         } catch (error) {
             console.error('Failed to load dashboard app:', error)
@@ -26,8 +28,11 @@ export function useRemote(name: RemoteAppName) {
         }
     }
 
-    const unmountRemoteApp = (target: HTMLElement) => {
-        target.innerHTML = ''
+    const unmountRemoteApp = () => {
+        if (element.value) {
+            element.value.innerHTML = ''
+            element.value = null
+        }
     }
 
     return {
