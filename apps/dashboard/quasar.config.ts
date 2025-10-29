@@ -1,9 +1,11 @@
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file
-
+import dotenv from 'dotenv'
 import { defineConfig } from '#q-app/wrappers';
 import { fileURLToPath } from 'node:url';
 import federation from '@originjs/vite-plugin-federation'
+
+dotenv.config()
 
 export default defineConfig((ctx) => {
   return {
@@ -46,7 +48,7 @@ export default defineConfig((ctx) => {
       },
 
       vueRouterMode: 'history', // available values: 'hash', 'history'
-      // vueRouterBase,
+      vueRouterBase: process.env.VUE_ROUTER_BASE || '/dashboard',
       // vueDevtools,
       // vueOptionsAPI: false,
 
@@ -97,7 +99,7 @@ export default defineConfig((ctx) => {
           name: 'dashboard',
           filename: 'remoteEntry.js',
           exposes: {
-            './DashboardApp': './src/pages/IndexPage.vue'
+            './DashboardApp': './src/bootstrap.ts',
           },
           //shared: ['vue', 'quasar', 'pinia', '@quasar/extras']
         })
