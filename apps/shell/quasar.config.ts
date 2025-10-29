@@ -37,7 +37,7 @@ export default defineConfig((ctx) => {
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#build
     build: {
       target: {
-        browser: ['esnext', 'firefox115', 'chrome115', 'safari14'],
+        browser: ['esnext'],
         node: 'node20',
       },
 

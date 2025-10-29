@@ -18,10 +18,7 @@ export function useRemote(name: RemoteAppName) {
     const mountRemoteApp = async (target: HTMLElement) => {
         try {
             const remoteModule = await loadRemoteModule()
-            console.log('Remote module loaded:', remoteModule)
-            
             remoteModule.mount(target)
-            
             status.value = 'ready'
         } catch (error) {
             console.error('Failed to load dashboard app:', error)
