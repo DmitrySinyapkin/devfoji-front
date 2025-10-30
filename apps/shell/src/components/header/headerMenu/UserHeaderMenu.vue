@@ -10,14 +10,14 @@ const userStore = useUserStore()
     <div class="row justify-center items-center q-gutter-xs">
         <!-- TODO: add real chat messages count -->
         <IconButton
-            icon="chat"
+            icon="chat_bubble"
             size="sm"
             tooltip-text="Chat"
             badge-text="3"
         />
         <IconButton
             to="/dashboard"
-            icon="home"
+            icon="dashboard"
             size="sm"
             tooltip-text="Dashboard"
         />
