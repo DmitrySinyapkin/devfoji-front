@@ -23,3 +23,10 @@ export const getErrorMessage = (error: ApiError) => {
         ? message.reduce((str, mes, index) => index === 0 ? str + mes : str + ', ' + mes, '')
         : message
 }
+
+export const handleApiErrorDefault = (error: unknown) => {
+    if (isApiError(error)) {
+        return getErrorMessage(error)
+    }
+    return 'Unknown error'
+}

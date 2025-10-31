@@ -1,5 +1,5 @@
 import { useUserStore } from "src/stores/user";
-import { eventBus, api, apiEndpoints, isApiError, getErrorMessage, localStorageKeys } from "@devfoji/shared";
+import { eventBus, api, apiEndpoints, handleApiErrorDefault, localStorageKeys } from "@devfoji/shared";
 import type { User, AuthToken } from "@devfoji/shared";
 import type { LoginBody, RegisterBody } from "src/types/auth";
 import { computed } from "vue";
@@ -23,9 +23,7 @@ export function useAuth() {
             }
         } catch(err) {
             console.log(err)
-            if (isApiError(err)) {
-                return getErrorMessage(err)
-            }
+            return handleApiErrorDefault(err)
         }
     }
 
@@ -40,9 +38,7 @@ export function useAuth() {
             }
         } catch(err) {
             console.log(err)
-            if (isApiError(err)) {
-                return getErrorMessage(err)
-            }
+            return handleApiErrorDefault(err)
         }
     }
 
@@ -58,9 +54,7 @@ export function useAuth() {
             }
         } catch(err) {
             console.log(err)
-            if (isApiError(err)) {
-                return getErrorMessage(err)
-            }
+            return handleApiErrorDefault(err)
         }
     }
 

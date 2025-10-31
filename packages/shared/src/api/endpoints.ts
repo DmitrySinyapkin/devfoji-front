@@ -12,6 +12,7 @@ export const usersUrl = '/users'
 export const userUrl = (userId: number) => `${usersUrl}/${userId}`
 
 export const projectsUrl = '/projects'
+export const myProjectsUrl = projectsUrl + '/me'
 export const projectUrl = (projectId: string) => `${projectsUrl}/${projectId}`
 
 export const projectMembersUrl = (projectId: string) => `${projectUrl(projectId)}/members`
@@ -19,3 +20,4 @@ export const projectMemberUrl = (projectId: string, memberId: number) => `${proj
 
 export const projecTasksUrl = (projectId: string) => `${projectUrl(projectId)}/tasks`
 export const projectTaskUrl = (projectId: string, taskId: string) => `${projecTasksUrl(projectId)}/${taskId}`
+export const myTasksUrl = '/tasks/me'
