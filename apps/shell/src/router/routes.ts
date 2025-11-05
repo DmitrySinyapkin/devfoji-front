@@ -13,7 +13,7 @@ const routes: RouteRecordRaw[] = [
         }
       },
       {
-        path: 'dashboard',
+        path: 'dashboard:catchAll(.*)*',
         component: () => import('components/remoteWrapper/RemoteWrapper.vue'),
         props: {
           remoteApp: 'dashboard'
