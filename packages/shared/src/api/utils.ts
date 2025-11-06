@@ -1,4 +1,6 @@
 import type { ApiError } from "./types";
+import { api } from "./index";
+import type { AxiosInstance } from "axios";
 
 export const isApiError = (error: unknown): error is ApiError => {
     if (typeof error !== 'object' || error === null) {
@@ -29,4 +31,11 @@ export const handleApiErrorDefault = (error: unknown) => {
         return getErrorMessage(error)
     }
     return 'Unknown error'
+}
+
+export const getApi = (): AxiosInstance => {
+  if (!api) {
+    console.warn('API not initialized.')
+  }
+  return api
 }

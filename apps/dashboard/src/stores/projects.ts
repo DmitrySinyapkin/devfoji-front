@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
-import { api, apiEndpoints, handleApiErrorDefault } from '@devfoji/shared'
+import { api } from "boot/axios";
+import { apiEndpoints, handleApiErrorDefault } from '@devfoji/shared'
 import type { Project, Task } from "@devfoji/shared";
 import { ref } from "vue";
 

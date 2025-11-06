@@ -15,7 +15,9 @@
     "postinstall": "quasar prepare"
   },
   "dependencies": {
+    "@devfoji/shared": "workspace:*",
     "@quasar/extras": "^1.16.4",
+    "axios": "^1.13.1",
     "hard": "^0.1.1",
     "pinia": "^3.0.1",
     "quasar": "^2.16.0",
