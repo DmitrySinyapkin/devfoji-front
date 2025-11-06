@@ -36,5 +36,4 @@ export interface Project {
     isPublic: boolean
     createdAt: string
     members: ProjectMember[]
-    tasks: Task[]
 }

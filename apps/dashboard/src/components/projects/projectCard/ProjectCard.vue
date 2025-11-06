@@ -1,0 +1,42 @@
+<script setup lang="ts">
+import type { Props } from './types';
+import CardWithLink from 'src/components/ui/cardWithLink/CardWithLink.vue';
+import { apiEndpoints} from '@devfoji/shared';
+import { useProject } from 'src/composables/useProject/useProject';
+import LinearProgress from 'src/components/ui/linearProgress/LinearProgress.vue';
+
+const { project } = defineProps<Props>()
+
+const { progress } = useProject(project)
+</script>
+
+<template>
+    <CardWithLink :to="apiEndpoints.projectUrl(project.id)">
+        <q-card-section>
+            <q-img 
+                :src="project.image" 
+                placeholder-src="/project_placeholder.jpg"
+            ></q-img>
+        </q-card-section>
+        <q-card-section>
+            <div class="text-subtitle-1 q-mb-sm">{{ project.title }}</div>
+            <div
+                class="text-caption text-grey q-mb-sm"
+                :style="{
+                    minHeight: '3.4em',
+                    display: '-webkit-box',
+                    '-webkit-box-orient': 'vertical',
+                    '-webkit-line-clamp': 2,
+                    lineClamp: 2,
+                    overflow: 'hidden'
+                }"
+            >
+                {{ project.description }}
+            </div>
+            <LinearProgress
+                :value="progress"
+                label="Progress"
+            />
+        </q-card-section>
+    </CardWithLink>
+</template>
