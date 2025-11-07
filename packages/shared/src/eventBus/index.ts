@@ -6,6 +6,16 @@ class EventBus {
     [K in keyof EventBusEvents]?: Array<Subscriber<EventBusEvents[K]>>
   } = {}
 
+  constructor() {
+    if (typeof window !== 'undefined') {
+      const global = window as any
+      if (!global.__GLOBAL_EVENT_BUS__) {
+        global.__GLOBAL_EVENT_BUS__ = this
+      }
+      return global.__GLOBAL_EVENT_BUS__
+    }
+  }
+
   on<T extends keyof EventBusEvents>(
     event: T,
     callback: Subscriber<EventBusEvents[T]>
@@ -41,7 +51,6 @@ class EventBus {
       subscribers.forEach((callback) => {
         try {
           callback(payload)
-          console.log('event:', event, ', payload:', payload)
         } catch (error) {
           console.error(`Error in event listener for "${String(event)}":`, error)
         }

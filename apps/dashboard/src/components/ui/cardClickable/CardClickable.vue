@@ -3,8 +3,17 @@ import type { Props } from './types';
 import { useRouter } from 'vue-router';
 
 const { to } = defineProps<Props>()
+const emit = defineEmits(['click'])
 
 const router = useRouter()
+
+const handleClick = async () => {
+    if (to) {
+        await router.push(to)
+    } else {
+        emit('click')
+    }
+}
 </script>
 
 <template>
@@ -12,7 +21,7 @@ const router = useRouter()
         <div 
             class="cursor-pointer" 
             v-ripple
-            @click="router.push(to)"
+            @click="handleClick"
         >
             <slot />
         </div>

@@ -1,17 +1,23 @@
 <script setup lang="ts">
 import type { Props } from './types';
-import CardWithLink from 'src/components/ui/cardWithLink/CardWithLink.vue';
+import CardClickable from 'src/components/ui/cardClickable/CardClickable.vue';
 import { apiEndpoints} from '@devfoji/shared';
 import { useProject } from 'src/composables/useProject/useProject';
+import { useHostRouter } from 'src/composables/useHostRouter/useHostRouter';
 import LinearProgress from 'src/components/ui/linearProgress/LinearProgress.vue';
 
 const { project } = defineProps<Props>()
 
 const { progress } = useProject(project)
+const { navigateTo } = useHostRouter()
+
+const handleClick = () => {
+    navigateTo(apiEndpoints.projectUrl(project.id))
+}
 </script>
 
 <template>
-    <CardWithLink :to="apiEndpoints.projectUrl(project.id)">
+    <CardClickable @click="handleClick">
         <q-card-section>
             <q-img 
                 :src="project.image" 
@@ -38,5 +44,5 @@ const { progress } = useProject(project)
                 label="Progress"
             />
         </q-card-section>
-    </CardWithLink>
+    </CardClickable>
 </template>
