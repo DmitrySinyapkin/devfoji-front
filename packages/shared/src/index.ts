@@ -2,7 +2,7 @@
 export * from './types'
 
 //api
-export { api } from './api/index'
+export * from './api/index'
 export * from './api/utils'
 export * as apiEndpoints from './api/endpoints'
 

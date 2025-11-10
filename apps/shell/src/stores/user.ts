@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { api, apiEndpoints, type User } from '@devfoji/shared'
+import { api } from 'boot/axios'
+import { apiEndpoints, type User } from '@devfoji/shared'
 
 export const useUserStore = defineStore('user', () => {
     const user = ref<User | null>(null)

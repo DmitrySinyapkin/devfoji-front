@@ -18,8 +18,6 @@ declare module 'vue' {
 //const api = axios.create({ baseURL: 'https://api.example.com' });
 
 const api = getApi()
-// TODO: fix shared packages in federation config
-api.defaults.baseURL = process.env.API_BASE_URL || 'http://localhost:3000/api'
 
 export default defineBoot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api

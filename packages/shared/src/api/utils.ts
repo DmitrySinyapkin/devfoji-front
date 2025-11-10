@@ -1,6 +1,6 @@
 import type { ApiError } from "./types";
-import { api } from "./index";
 import type { AxiosInstance } from "axios";
+import { loginUrl, refreshUrl } from "./endpoints";
 
 export const isApiError = (error: unknown): error is ApiError => {
     if (typeof error !== 'object' || error === null) {
@@ -33,9 +33,20 @@ export const handleApiErrorDefault = (error: unknown) => {
     return 'Unknown error'
 }
 
-export const getApi = (): AxiosInstance => {
-  if (!api) {
-    console.warn('API not initialized.')
-  }
-  return api
+export const addInterceptors = (instances: AxiosInstance[]) => {
+    instances.forEach(instance => {
+        instance.interceptors.response.use(function (response) {
+            return response.data
+        }, async function (error) {
+            const originalRequest = error.config
+            if (error.response.status === 401) {
+                if (![refreshUrl, loginUrl].includes(originalRequest.url)) {
+                    await instance.post(refreshUrl)
+                    originalRequest._retry = true
+                    return instance(originalRequest)
+                }
+            }
+            return Promise.reject(error.response.data) 
+        })
+    })
 }

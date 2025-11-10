@@ -1,5 +1,6 @@
 import { useUserStore } from "src/stores/user";
-import { eventBus, api, apiEndpoints, handleApiErrorDefault, localStorageKeys } from "@devfoji/shared";
+import { api } from 'boot/axios'
+import { eventBus, apiEndpoints, handleApiErrorDefault, localStorageKeys } from "@devfoji/shared";
 import type { User, AuthToken } from "@devfoji/shared";
 import type { LoginBody, RegisterBody } from "src/types/auth";
 import { computed } from "vue";
