@@ -23,6 +23,9 @@ importers:
       axios:
         specifier: ^1.13.1
         version: 1.13.1
+      hard:
+        specifier: ^0.1.1
+        version: 0.1.1
       pinia:
         specifier: ^3.0.1
         version: 3.0.3(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3))
@@ -1869,6 +1872,9 @@ packages:
 
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
+
+  hard@0.1.1:
+    resolution: {integrity: sha512-tQzEOEINMvJyF/Rfuc/vKdj30rXdc7RKPvp7aBu4Jp+UP8IeUYBpv12a5cJUFn83Lm8ahB0UGYdjYdXkynqfJw==}
 
   has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
@@ -5257,6 +5263,8 @@ snapshots:
   graceful-fs@4.2.11: {}
 
   graphemer@1.4.0: {}
+
+  hard@0.1.1: {}
 
   has-flag@4.0.0: {}
 
