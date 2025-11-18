@@ -102,6 +102,11 @@ export default defineConfig((ctx) => {
               external: `${process.env.DASHBOARD_APP_URL}/remoteEntry.js`,
               externalType: 'url',
               from: 'vite',
+            },
+            'project': {
+              external: `${process.env.PROJECT_APP_URL}/remoteEntry.js`,
+              externalType: 'url',
+              from: 'vite',
             }, 
           },
           shared: ['vue', 'quasar', 'pinia', '@quasar/extras']

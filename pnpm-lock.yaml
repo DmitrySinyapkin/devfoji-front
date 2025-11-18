@@ -97,6 +97,91 @@ importers:
         specifier: ^3.0.7
         version: 3.1.1(typescript@5.9.3)
 
+  apps/project:
+    dependencies:
+      '@devfoji/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
+      '@quasar/extras':
+        specifier: ^1.16.4
+        version: 1.17.0
+      axios:
+        specifier: ^1.2.1
+        version: 1.13.1
+      hard:
+        specifier: ^0.1.1
+        version: 0.1.1
+      pinia:
+        specifier: ^3.0.1
+        version: 3.0.3(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3))
+      quasar:
+        specifier: ^2.16.0
+        version: 2.18.5
+      shared:
+        specifier: link:..\shared
+        version: link:../shared
+      vue:
+        specifier: ^3.5.22
+        version: 3.5.22(typescript@5.9.3)
+      vue-i18n:
+        specifier: ^11.0.0
+        version: 11.1.12(vue@3.5.22(typescript@5.9.3))
+      vue-router:
+        specifier: ^4.0.12
+        version: 4.5.1(vue@3.5.22(typescript@5.9.3))
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.14.0
+        version: 9.37.0
+      '@intlify/unplugin-vue-i18n':
+        specifier: ^4.0.0
+        version: 4.0.0(rollup@4.52.4)(vue-i18n@11.1.12(vue@3.5.22(typescript@5.9.3)))
+      '@originjs/vite-plugin-federation':
+        specifier: ^1.4.1
+        version: 1.4.1
+      '@quasar/app-vite':
+        specifier: ^2.1.0
+        version: 2.4.0(@types/node@20.19.19)(eslint@9.37.0)(pinia@3.0.3(typescript@5.9.3)(vue@3.5.22(typescript@5.9.3)))(quasar@2.18.5)(rollup@4.52.4)(sass@1.93.2)(terser@5.44.0)(typescript@5.9.3)(vue-router@4.5.1(vue@3.5.22(typescript@5.9.3)))(vue@3.5.22(typescript@5.9.3))(yaml@2.8.1)
+      '@quasar/cli':
+        specifier: ^2.5.0
+        version: 2.5.0(@types/express@4.17.23)
+      '@types/node':
+        specifier: ^20.5.9
+        version: 20.19.19
+      '@vue/eslint-config-prettier':
+        specifier: ^10.1.0
+        version: 10.2.0(eslint@9.37.0)(prettier@3.6.2)
+      '@vue/eslint-config-typescript':
+        specifier: ^14.4.0
+        version: 14.6.0(eslint-plugin-vue@10.5.0(@typescript-eslint/parser@8.46.0(eslint@9.37.0)(typescript@5.9.3))(eslint@9.37.0)(vue-eslint-parser@10.2.0(eslint@9.37.0)))(eslint@9.37.0)(typescript@5.9.3)
+      autoprefixer:
+        specifier: ^10.4.2
+        version: 10.4.21(postcss@8.5.6)
+      eslint:
+        specifier: ^9.14.0
+        version: 9.37.0
+      eslint-plugin-vue:
+        specifier: ^10.4.0
+        version: 10.5.0(@typescript-eslint/parser@8.46.0(eslint@9.37.0)(typescript@5.9.3))(eslint@9.37.0)(vue-eslint-parser@10.2.0(eslint@9.37.0))
+      globals:
+        specifier: ^16.4.0
+        version: 16.4.0
+      prettier:
+        specifier: ^3.3.3
+        version: 3.6.2
+      typescript:
+        specifier: ^5.9.2
+        version: 5.9.3
+      vite-plugin-checker:
+        specifier: ^0.11.0
+        version: 0.11.0(eslint@9.37.0)(optionator@0.9.4)(typescript@5.9.3)(vite@7.1.9(@types/node@20.19.19)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.0)(yaml@2.8.1))(vue-tsc@3.1.1(typescript@5.9.3))
+      vue-eslint-parser:
+        specifier: ^10.2.0
+        version: 10.2.0(eslint@9.37.0)
+      vue-tsc:
+        specifier: ^3.0.7
+        version: 3.1.1(typescript@5.9.3)
+
   apps/shell:
     dependencies:
       '@devfoji/shared':

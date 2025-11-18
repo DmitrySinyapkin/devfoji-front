@@ -15,7 +15,7 @@ export default defineConfig((ctx) => {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
-    boot: ['i18n'],
+    boot: ['i18n', 'axios'],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#css
     css: ['app.scss'],
@@ -48,7 +48,7 @@ export default defineConfig((ctx) => {
       },
 
       vueRouterMode: 'history', // available values: 'hash', 'history'
-      vueRouterBase: process.env.DASHBOARD_ROUTER_BASE || '/dashboard',
+      vueRouterBase: process.env.PROJECT_ROUTER_BASE || '/projects',
       // vueDevtools,
       // vueOptionsAPI: false,
 
@@ -96,10 +96,10 @@ export default defineConfig((ctx) => {
           { server: false },
         ],
         federation({
-          name: 'dashboard',
+          name: 'project',
           filename: 'remoteEntry.js',
           exposes: {
-            './DashboardApp': './src/bootstrap.ts',
+            './ProjectApp': './src/bootstrap.ts',
           },
           shared: ['vue', 'quasar', 'pinia', '@quasar/extras']
         })
@@ -108,10 +108,9 @@ export default defineConfig((ctx) => {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#devserver
     devServer: {
-      port: 3002,
-      middlewareMode: false,
+      port: 3003,
       // https: true,
-      //open: true, // opens browser window automatically
+      open: true, // opens browser window automatically
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#framework
@@ -137,7 +136,7 @@ export default defineConfig((ctx) => {
     animations: [],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#sourcefiles
-     sourceFiles: {
+    // sourceFiles: {
     //   rootComponent: 'src/App.vue',
     //   router: 'src/router/index',
     //   store: 'src/store/index',
@@ -147,11 +146,11 @@ export default defineConfig((ctx) => {
     //   electronMain: 'src-electron/electron-main',
     //   electronPreload: 'src-electron/electron-preload'
     //   bexManifestFile: 'src-bex/manifest.json
-    },
+    // },
 
     // https://v2.quasar.dev/quasar-cli-vite/developing-ssr/configuring-ssr
     ssr: {
-      prodPort: 3002, // The default port that the production server should use
+      prodPort: 3003, // The default port that the production server should use
       // (gets superseded if process.env.PORT is specified at runtime)
 
       middlewares: [
@@ -225,7 +224,7 @@ export default defineConfig((ctx) => {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: '@devfoji/dashboard',
+        appId: '@devfoji/project',
       },
     },
 

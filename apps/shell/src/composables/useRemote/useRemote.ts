@@ -23,7 +23,7 @@ export function useRemote(name: RemoteAppName) {
             element.value = target
             status.value = 'ready'
         } catch (error) {
-            console.error('Failed to load dashboard app:', error)
+            console.error(`Failed to load ${name} app:`, error)
             status.value = 'error'
         }
     }
