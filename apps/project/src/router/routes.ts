@@ -6,8 +6,14 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { 
-        path: '', 
-        component: () => import('pages/IndexPage.vue')
+        path: ':projectId', 
+        component: () => import('pages/IndexPage.vue'),
+        children: [
+          {
+            path: 'error',
+            component: () => import('pages/ErrorLoadingProject.vue')
+          }
+        ]
       }
     ],
   },
