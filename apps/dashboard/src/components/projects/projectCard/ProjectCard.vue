@@ -3,7 +3,7 @@ import type { Props } from './types';
 import CardClickable from 'src/components/ui/cardClickable/CardClickable.vue';
 import { apiEndpoints} from '@devfoji/shared';
 import { useProject } from 'src/composables/useProject/useProject';
-import { useHostRouter } from 'src/composables/useHostRouter/useHostRouter';
+import { useHostRouter } from '@devfoji/shared';
 import LinearProgress from 'src/components/ui/linearProgress/LinearProgress.vue';
 
 const { project } = defineProps<Props>()

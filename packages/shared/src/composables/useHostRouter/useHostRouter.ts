@@ -1,4 +1,4 @@
-import { eventBus } from "@devfoji/shared";
+import { eventBus } from "../../eventBus"
 
 export function useHostRouter() {
     const navigateTo = (path: string) => {

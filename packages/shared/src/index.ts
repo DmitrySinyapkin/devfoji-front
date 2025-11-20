@@ -13,3 +13,5 @@ export type { EventBusEvents } from './eventBus/events'
 //config
 export * from './config'
 
+//composables
+export { useHostRouter } from './composables/useHostRouter/useHostRouter'
