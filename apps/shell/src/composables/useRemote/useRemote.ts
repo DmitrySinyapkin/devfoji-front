@@ -1,12 +1,12 @@
 import { remoteApps } from "src/config/remoteApps";
-import { ref } from "vue";
+import { ref, type App } from "vue";
 import type { RemoteAppName, RemoteAppStatus } from "./types";
 
-export function useRemote(name: RemoteAppName) {
+export function useRemote() {
     const status = ref<RemoteAppStatus>('loading')
-    const element = ref<HTMLElement | null>(null)
+    const app = ref<App | null>(null)
 
-    const loadRemoteModule = async () => {
+    const loadRemoteModule = async (name: RemoteAppName) => {
         const loader = remoteApps[name]
 
         if (!loader) {
@@ -16,11 +16,10 @@ export function useRemote(name: RemoteAppName) {
         return await loader()
     }
 
-    const mountRemoteApp = async (target: HTMLElement) => {
+    const mountRemoteApp = async (name: RemoteAppName, target: HTMLElement) => {
         try {
-            const remoteModule = await loadRemoteModule()
-            remoteModule.mount(target)
-            element.value = target
+            const remoteModule = await loadRemoteModule(name)
+            app.value = remoteModule.mount(target)
             status.value = 'ready'
         } catch (error) {
             console.error(`Failed to load ${name} app:`, error)
@@ -29,9 +28,9 @@ export function useRemote(name: RemoteAppName) {
     }
 
     const unmountRemoteApp = () => {
-        if (element.value) {
-            element.value.innerHTML = ''
-            element.value = null
+        if (app.value) {
+            app.value.unmount()
+            app.value = null
         }
     }
 
