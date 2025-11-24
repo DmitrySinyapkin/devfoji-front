@@ -29,7 +29,7 @@ export const Router = createRouter({
   // Leave this as is and make changes in quasar.conf.js instead!
   // quasar.conf.js -> build -> vueRouterMode
   // quasar.conf.js -> build -> publicPath
-  history: createHistory(process.env.PROJECT_ROUTER_BASEE),
+  history: createHistory(process.env.PROJECT_ROUTER_BASE),
 });
 
 export default defineRouter(function (/* { store, ssrContext } */) {

@@ -9,27 +9,27 @@ const menuItems: MenuItem[] = [
     {
         label: 'General',
         icon: 'article',
-        to: `/projects/${projectStore.project?.id}`
+        to: `/${projectStore.project?.id}`
     },
     {
         label: 'Tasks',
         icon: 'check_box',
-        to: `/projects/${projectStore.project?.id}/tasks`
+        to: `/${projectStore.project?.id}/tasks`
     },
     {
         label: 'Team',
         icon: 'account_circle',
-        to: `/projects/${projectStore.project?.id}/members`
+        to: `/${projectStore.project?.id}/members`
     },
     {
         label: 'Files',
         icon: 'folder_shared',
-        to: `/projects/${projectStore.project?.id}/files`
+        to: `/${projectStore.project?.id}/files`
     },
     {
         label: 'Settings',
         icon: 'settings',
-        to: `/projects/${projectStore.project?.id}/settings`
+        to: `/${projectStore.project?.id}/settings`
     },
 ]
 </script>
